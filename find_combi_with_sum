@@ -1,0 +1,27 @@
+from itertools import combinations
+
+def find_combos(arr,num):
+    combos=list(combinations(arr,num))
+    #print(combos)
+    combos_sum=[]
+    for combo in combos:
+        combos_sum.append(sum(combo))
+    #print(combos_sum)
+    return set(combos_sum)
+
+def print_sum_pairs(lst,k):
+    res=[]
+    while lst:
+        num=lst.pop()
+        diff=k-num
+        if diff in lst:
+            res.append((diff,num))
+    res.reverse()
+    print(res)
+
+arr={1,2,3,4,9,7,5}
+arr1=list(arr)
+sums=find_combos(arr,2)
+for i in sums:
+    new_arr=arr1.copy()
+    print_sum_pairs(new_arr,i)
